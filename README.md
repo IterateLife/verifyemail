@@ -1,19 +1,25 @@
 # 本程序只做学习用途，请勿非法用途
 # verifyemail Python3.6.5
 
-Python在线验证邮箱真实性，支持批量验证，支持全部域名邮箱，支持全部域名邮箱，支持全部域名邮箱，支持全部域名邮箱
+Python在线验证邮箱真实性，支持批量验证
 
+## Tips
+1.目前不支持企业邮箱验证
+2.批量验证请增加timeout时间 以及增大间隔时间 避免被封
 
-final_list = verify_istrue(['190758586@qq.com', '19075858666@qq.com'])  
-print(final_list)  #{'190758586@qq.com': True, '19075858666@qq.com': False}  
-    
+## 对比原版变化
+更新内容重构邮箱验证脚本，新增格式校验和错误处理
+1. 新增邮箱格式正则校验函数
+2. 替换旧的dns.resolver.query为resolve并添加异常捕获
+3. 重构代码结构，提取配置常量
+4. 优化输入处理和日志输出
+5. 使用with语句管理SMTP连接，添加请求间隔控制
 
-#2018-09-21 18:42:35,017 - verifyemail.py [line:23] - INFO: 正在查找邮箱服务器  
-#2018-09-21 18:42:35,030 - verifyemail.py [line:26] - INFO: 查找结果为：['mx3.qq.com', 'mx2.qq.com', 'mx1.qq.com']  
-#2018-09-21 18:42:35,030 - verifyemail.py [line:52] - INFO: 正在连接服务器...：mx2.qq.com  
-#2018-09-21 18:42:35,160 - verifyemail.py [line:56] - DEBUG: (250, b'newmx33.qq.com')  
-#2018-09-21 18:42:35,218 - verifyemail.py [line:59] - DEBUG: (250, b'Ok')  
-#2018-09-21 18:42:35,317 - verifyemail.py [line:62] - DEBUG: (250, b'Ok')  
-#2018-09-21 18:42:35,357 - verifyemail.py [line:56] - DEBUG: (250, b'newmx33.qq.com')  
-#2018-09-21 18:42:35,418 - verifyemail.py [line:59] - DEBUG: (250, b'Ok')  
-#2018-09-21 18:42:35,460 - verifyemail.py [line:62] - DEBUG: (550, b'Mailbox not found. http://service.mail.qq.com/cgi-#bin/help?subtype=1&&id=20022&&no=1000728')  
+---
+
+## Credit & License
+
+This project is a fork of **[verifyemail](https://github.com/Tzeross/verifyemail)** 
+by [Tzeross]
+
+if you like this fork, please also star and credit the original.
